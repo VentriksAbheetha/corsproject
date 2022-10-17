@@ -6,15 +6,25 @@ import qaAPIS from '../QA.postman_collection.js'
 import {APICORSrequest} from "../corstest.js";
 import {signinCORSrequest} from "../signin.js";
 
+const getData = async () => {
+    try {
+        const res = await signinCORSrequest('PUT', 'https://qa.ventriksapi2.com/account/signin');
+        console.log(res);
+        return res;
+    } catch (err) {
+        console.log(err);
+    }
+};
+const authToken = getData();
+console.log(authToken)
+console.log(authToken)
 
-const authToken = signinCORSrequest();
 function cors() {
 
     let qaurl = 'https://qa.ventriksapi2.com'
     let replaceString = '{{qaurl}}'
     for (let i = 0; i < qaAPIS.item.length; i++) {
             for (let j = 0; j < qaAPIS.item[i].item.length; j++) {
-
 
                 if(qaAPIS.item[i].name === ("License")){ //Name of the module here can be changed to check the response of other modules
 
@@ -25,11 +35,14 @@ function cors() {
                     var method = qaAPIS.item[i].item[j].request.method;
                     APICORSrequest(url, method, authToken);
 
+
                 }
             }
     }
 
 }
+
+
 
 cors();
 
