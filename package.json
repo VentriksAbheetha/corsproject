@@ -1,0 +1,8 @@
+{
+  "name": "corsproject",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "xmlhttprequest": "^1.8.0"
+  }
+}
