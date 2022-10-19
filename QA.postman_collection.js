@@ -2,10 +2,10 @@ let qaAPIS;
 export default qaAPIS =
     {
         "info": {
-            "_postman_id": "7c0378ac-6ce8-464d-b87e-ea84aeb5e840",
+            "_postman_id": "140b4c7a-5f8a-48d5-ba68-70e8fe1a2c67",
             "name": "QA",
             "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-            "_exporter_id": "23727016"
+            "_exporter_id": "23302792"
         },
         "item": [
             {
@@ -5064,308 +5064,303 @@ export default qaAPIS =
                 "name": "Integration",
                 "item": [
                     {
-                        "name": "IntegrationApis",
-                        "item": [
+                        "name": "GetAllUserIntegrations",
+                        "event": [
                             {
-                                "name": "GetIntegrationById",
-                                "event": [
-                                    {
-                                        "listen": "test",
-                                        "script": {
-                                            "exec": [
-                                                "pm.test(\"Status code is 200\", function () {\r",
-                                                "    pm.response.to.have.status(200);\r",
-                                                "});\r",
-                                                "pm.test(\"Your test name\", function () {\r",
-                                                "    var jsonData = pm.response.json();\r",
-                                                "    pm.expect(jsonData.status).to.eql(true);\r",
-                                                "});"
-                                            ],
-                                            "type": "text/javascript"
-                                        }
-                                    }
-                                ],
-                                "request": {
-                                    "auth": {
-                                        "type": "bearer",
-                                        "bearer": [
-                                            {
-                                                "key": "token",
-                                                "value": "{{idTokendev}}",
-                                                "type": "string"
-                                            }
-                                        ]
-                                    },
-                                    "method": "GET",
-                                    "header": [],
-                                    "url": {
-                                        "raw": "{{qaurl}}/integration/getIntegrationSetting?id=61a71f919a71d608eaf12976",
-                                        "host": [
-                                            "{{qaurl}}"
-                                        ],
-                                        "path": [
-                                            "integration",
-                                            "getIntegrationSetting"
-                                        ],
-                                        "query": [
-                                            {
-                                                "key": "id",
-                                                "value": "61a71f919a71d608eaf12976"
-                                            }
-                                        ]
-                                    }
-                                },
-                                "response": []
-                            },
-                            {
-                                "name": "GetAllIntegrationSettings",
-                                "event": [
-                                    {
-                                        "listen": "test",
-                                        "script": {
-                                            "exec": [
-                                                "pm.test(\"Status code is 200\", function () {\r",
-                                                "    pm.response.to.have.status(200);\r",
-                                                "});\r",
-                                                "pm.test(\"Your test name\", function () {\r",
-                                                "    var jsonData = pm.response.json();\r",
-                                                "    pm.expect(jsonData.status).to.eql(true);\r",
-                                                "});"
-                                            ],
-                                            "type": "text/javascript"
-                                        }
-                                    }
-                                ],
-                                "request": {
-                                    "auth": {
-                                        "type": "bearer",
-                                        "bearer": [
-                                            {
-                                                "key": "token",
-                                                "value": "{{idTokendev}}",
-                                                "type": "string"
-                                            }
-                                        ]
-                                    },
-                                    "method": "GET",
-                                    "header": [],
-                                    "url": {
-                                        "raw": "{{qaurl}}/integration/getAllIntegrationSettings",
-                                        "host": [
-                                            "{{qaurl}}"
-                                        ],
-                                        "path": [
-                                            "integration",
-                                            "getAllIntegrationSettings"
-                                        ]
-                                    }
-                                },
-                                "response": []
-                            },
-                            {
-                                "name": "GetAllUserIntegrations",
-                                "event": [
-                                    {
-                                        "listen": "test",
-                                        "script": {
-                                            "exec": [
-                                                "pm.test(\"Status code is 200\", function () {\r",
-                                                "    pm.response.to.have.status(200);\r",
-                                                "});\r",
-                                                "pm.test(\"Your test name\", function () {\r",
-                                                "    var jsonData = pm.response.json();\r",
-                                                "    pm.expect(jsonData.status).to.eql(true);\r",
-                                                "});\r",
-                                                ""
-                                            ],
-                                            "type": "text/javascript"
-                                        }
-                                    }
-                                ],
-                                "request": {
-                                    "auth": {
-                                        "type": "bearer",
-                                        "bearer": [
-                                            {
-                                                "key": "token",
-                                                "value": "{{idTokendev}}",
-                                                "type": "string"
-                                            }
-                                        ]
-                                    },
-                                    "method": "GET",
-                                    "header": [
-                                        {
-                                            "key": "Authorization",
-                                            "value": "eyJraWQiOiJmejRsRE5KdWJLb0tmbFQyUVBZcWhyZTBQQjVSeG9wRG8xN1lIelc2SHNzPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIwMzk0YjdjNi1kYzJiLTRiMmUtODQ4My01YjZjODQ1YTBmZTIiLCJjb2duaXRvOmdyb3VwcyI6WyJ2dHhEZXZlbG9wZXJzIl0sImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiY29nbml0bzpwcmVmZXJyZWRfcm9sZSI6ImFybjphd3M6aWFtOjo0NTAxMjc3ODUzMDk6cm9sZVwvUm9sZUNvZ25pdG8iLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuZXUtd2VzdC0xLmFtYXpvbmF3cy5jb21cL2V1LXdlc3QtMV9LRzg5dW1GQzciLCJjb2duaXRvOnVzZXJuYW1lIjoicmFuaml0aGEubmFnZW5kcmEiLCJjdXN0b206Y29tcGFueSI6IlZlbnRyaWtzIiwiY29nbml0bzpyb2xlcyI6WyJhcm46YXdzOmlhbTo6NDUwMTI3Nzg1MzA5OnJvbGVcL1JvbGVDb2duaXRvIl0sImF1ZCI6IjVsaDBuajhzbGUyMTg3NmdibjY3aHQwNzZzIiwiZXZlbnRfaWQiOiIzOWFhMWMwOC0wOGZlLTRmZjItOWI0MC1iNDc0MjFkZmIxOGMiLCJ0b2tlbl91c2UiOiJpZCIsImF1dGhfdGltZSI6MTYzOTk5ODA4MiwibmFtZSI6IlJhbmppdGhhIiwicGhvbmVfbnVtYmVyIjoiKzkxOTY4NjIwMzg4MyIsImV4cCI6MTY0MDAwMTY4MiwiaWF0IjoxNjM5OTk4MDgyLCJmYW1pbHlfbmFtZSI6Ik4iLCJlbWFpbCI6InJhbmppdGhhLm5hZ2VuZHJhQHZlbnRyaWtzLmNvbSJ9.UwPrsVvlrgPeLs_IU7oqi4n4aQriH1oi--c-R1w25pYfg8duzP0AojUfRfntnp_UcUVe5lveASp2U9n7YFDVivbcET7vkcb6XXy0l6VL2Uc_SdOt6jJ0ME9wVSiQrFkrjRZMRmKlNiHPEEBCxUWOeoh1emgFTDiR6iV4syQK1Fa82gsaaoslfpQlSixW9g92qpUN4pDCyD6ckRQQ3H2mo9vHlLf8TBJMSP7CT4vS1oDm51-tE_EDkLaSnYIIwANdXDl_cf4B43Qm2biHQISaWV3YiPRLBQ3aYf9RPiqwmFeLY2Ft43z9Hth_BTNRLf94RiK7IUHYos9qAiPgcGePKg",
-                                            "type": "text"
-                                        }
+                                "listen": "test",
+                                "script": {
+                                    "exec": [
+                                        "pm.test(\"Status code is 200\", function () {\r",
+                                        "    pm.response.to.have.status(200);\r",
+                                        "});\r",
+                                        "pm.test(\"Your test name\", function () {\r",
+                                        "    var jsonData = pm.response.json();\r",
+                                        "    pm.expect(jsonData.status).to.eql(true);\r",
+                                        "});\r",
+                                        ""
                                     ],
-                                    "url": {
-                                        "raw": "{{qaurl}}/integration/getAllUserIntegrationSettings",
-                                        "host": [
-                                            "{{qaurl}}"
-                                        ],
-                                        "path": [
-                                            "integration",
-                                            "getAllUserIntegrationSettings"
-                                        ]
-                                    }
-                                },
-                                "response": []
-                            },
-                            {
-                                "name": "CreateUserIntegration",
-                                "event": [
-                                    {
-                                        "listen": "test",
-                                        "script": {
-                                            "exec": [
-                                                "pm.test(\"Status code is 200\", function () {\r",
-                                                "    pm.response.to.have.status(200);\r",
-                                                "});\r",
-                                                "pm.test(\"Your test name\", function () {\r",
-                                                "    var jsonData = pm.response.json();\r",
-                                                "    pm.expect(jsonData.status).to.eql(true);\r",
-                                                "});"
-                                            ],
-                                            "type": "text/javascript"
-                                        }
-                                    }
-                                ],
-                                "request": {
-                                    "auth": {
-                                        "type": "bearer",
-                                        "bearer": [
-                                            {
-                                                "key": "token",
-                                                "value": "{{idTokendev}}",
-                                                "type": "string"
-                                            }
-                                        ]
-                                    },
-                                    "method": "POST",
-                                    "header": [],
-                                    "url": {
-                                        "raw": "{{qaurl}}/integration/createUserIntegration",
-                                        "host": [
-                                            "{{qaurl}}"
-                                        ],
-                                        "path": [
-                                            "integration",
-                                            "createUserIntegration"
-                                        ]
-                                    }
-                                },
-                                "response": []
-                            },
-                            {
-                                "name": "GetUserIntegrationById",
-                                "event": [
-                                    {
-                                        "listen": "test",
-                                        "script": {
-                                            "exec": [
-                                                "pm.test(\"Status code is 200\", function () {\r",
-                                                "    pm.response.to.have.status(200);\r",
-                                                "});\r",
-                                                "pm.test(\"Your test name\", function () {\r",
-                                                "    var jsonData = pm.response.json();\r",
-                                                "    pm.expect(jsonData.status).to.eql(true);\r",
-                                                "});\r",
-                                                "pm.test(\"Your test name\", function () {\r",
-                                                "    var jsonData = pm.response.json();\r",
-                                                "    pm.expect(jsonData.message).to.eql(\"User Integration setting retrieved successfully\");\r",
-                                                "});"
-                                            ],
-                                            "type": "text/javascript"
-                                        }
-                                    }
-                                ],
-                                "request": {
-                                    "auth": {
-                                        "type": "bearer",
-                                        "bearer": [
-                                            {
-                                                "key": "token",
-                                                "value": "{{idTokendev}}",
-                                                "type": "string"
-                                            }
-                                        ]
-                                    },
-                                    "method": "GET",
-                                    "header": [
-                                        {
-                                            "key": "Authorization",
-                                            "value": "eyJraWQiOiJmejRsRE5KdWJLb0tmbFQyUVBZcWhyZTBQQjVSeG9wRG8xN1lIelc2SHNzPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIwMzk0YjdjNi1kYzJiLTRiMmUtODQ4My01YjZjODQ1YTBmZTIiLCJjb2duaXRvOmdyb3VwcyI6WyJ2dHhEZXZlbG9wZXJzIl0sImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiY29nbml0bzpwcmVmZXJyZWRfcm9sZSI6ImFybjphd3M6aWFtOjo0NTAxMjc3ODUzMDk6cm9sZVwvUm9sZUNvZ25pdG8iLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuZXUtd2VzdC0xLmFtYXpvbmF3cy5jb21cL2V1LXdlc3QtMV9LRzg5dW1GQzciLCJjb2duaXRvOnVzZXJuYW1lIjoicmFuaml0aGEubmFnZW5kcmEiLCJjdXN0b206Y29tcGFueSI6IlZlbnRyaWtzIiwiY29nbml0bzpyb2xlcyI6WyJhcm46YXdzOmlhbTo6NDUwMTI3Nzg1MzA5OnJvbGVcL1JvbGVDb2duaXRvIl0sImF1ZCI6IjVsaDBuajhzbGUyMTg3NmdibjY3aHQwNzZzIiwiZXZlbnRfaWQiOiI3NzM5MTQwNy03M2YzLTQ3OGEtOGJlMy02MTQ5ZTA4NTQ5Y2QiLCJ0b2tlbl91c2UiOiJpZCIsImF1dGhfdGltZSI6MTY0MDAwMjE3NCwibmFtZSI6IlJhbmppdGhhIiwicGhvbmVfbnVtYmVyIjoiKzkxOTY4NjIwMzg4MyIsImV4cCI6MTY0MDAwNTc3NCwiaWF0IjoxNjQwMDAyMTc0LCJmYW1pbHlfbmFtZSI6Ik4iLCJlbWFpbCI6InJhbmppdGhhLm5hZ2VuZHJhQHZlbnRyaWtzLmNvbSJ9.KQ_G9XH7IdDklLW6G4-EiwwfPrAQstuzz1FWzswSLeEuMPI3yZHp7ExagFxVWuMvIm5r3qOGz_gsmHGlG5CHdYQ5q6uvOcxceWQ-ymjEWOZjBlghPUNfcaVKxHjHyq0FuLcEQje1mOQp6CZB6PoU98i3tlcnEgZR-e5HzTtV8xNOJflpv6tLbaCh8xE08XVz7iFLXA9ybJ1L4DlOXIi3DVXlW7Nmz_Db-j5jFTQwFc2OH_QyUoU0ZzU6f_W5AtiIDz4MdlL_REAxvbiD1xRE_tPlHnl9KRyi8h7QO9yVpM53x8MRNp-aJUYxnJ24YDfcBDS0o5Ie5k1y5oVjPDrwMQ",
-                                            "type": "text"
-                                        }
-                                    ],
-                                    "url": {
-                                        "raw": "{{qaurl}}/integration/getUserIntegration?id=61c066908e8a0310ec80b65e",
-                                        "host": [
-                                            "{{qaurl}}"
-                                        ],
-                                        "path": [
-                                            "integration",
-                                            "getUserIntegration"
-                                        ],
-                                        "query": [
-                                            {
-                                                "key": "id",
-                                                "value": "61c066908e8a0310ec80b65e"
-                                            }
-                                        ]
-                                    }
-                                },
-                                "response": []
-                            },
-                            {
-                                "name": "getAllMarketplaceIntegrations",
-                                "event": [
-                                    {
-                                        "listen": "test",
-                                        "script": {
-                                            "exec": [
-                                                "pm.test(\"Status code is 200\", function () {\r",
-                                                "    pm.response.to.have.status(200);\r",
-                                                "});\r",
-                                                "pm.test(\"Your test name\", function () {\r",
-                                                "    var jsonData = pm.response.json();\r",
-                                                "    pm.expect(jsonData.status).to.eql(true);\r",
-                                                "});"
-                                            ],
-                                            "type": "text/javascript"
-                                        }
-                                    }
-                                ],
-                                "request": {
-                                    "auth": {
-                                        "type": "bearer",
-                                        "bearer": [
-                                            {
-                                                "key": "token",
-                                                "value": "{{idTokendev}}",
-                                                "type": "string"
-                                            }
-                                        ]
-                                    },
-                                    "method": "GET",
-                                    "header": [],
-                                    "url": {
-                                        "raw": "{{qaurl}}/product/getAllMarketplaceIntegrations",
-                                        "host": [
-                                            "{{qaurl}}"
-                                        ],
-                                        "path": [
-                                            "product",
-                                            "getAllMarketplaceIntegrations"
-                                        ]
-                                    }
-                                },
-                                "response": []
+                                    "type": "text/javascript"
+                                }
                             }
-                        ]
+                        ],
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{idTokendev}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "GET",
+                            "header": [
+                                {
+                                    "key": "Authorization",
+                                    "value": "eyJraWQiOiJmejRsRE5KdWJLb0tmbFQyUVBZcWhyZTBQQjVSeG9wRG8xN1lIelc2SHNzPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIwMzk0YjdjNi1kYzJiLTRiMmUtODQ4My01YjZjODQ1YTBmZTIiLCJjb2duaXRvOmdyb3VwcyI6WyJ2dHhEZXZlbG9wZXJzIl0sImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiY29nbml0bzpwcmVmZXJyZWRfcm9sZSI6ImFybjphd3M6aWFtOjo0NTAxMjc3ODUzMDk6cm9sZVwvUm9sZUNvZ25pdG8iLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuZXUtd2VzdC0xLmFtYXpvbmF3cy5jb21cL2V1LXdlc3QtMV9LRzg5dW1GQzciLCJjb2duaXRvOnVzZXJuYW1lIjoicmFuaml0aGEubmFnZW5kcmEiLCJjdXN0b206Y29tcGFueSI6IlZlbnRyaWtzIiwiY29nbml0bzpyb2xlcyI6WyJhcm46YXdzOmlhbTo6NDUwMTI3Nzg1MzA5OnJvbGVcL1JvbGVDb2duaXRvIl0sImF1ZCI6IjVsaDBuajhzbGUyMTg3NmdibjY3aHQwNzZzIiwiZXZlbnRfaWQiOiIzOWFhMWMwOC0wOGZlLTRmZjItOWI0MC1iNDc0MjFkZmIxOGMiLCJ0b2tlbl91c2UiOiJpZCIsImF1dGhfdGltZSI6MTYzOTk5ODA4MiwibmFtZSI6IlJhbmppdGhhIiwicGhvbmVfbnVtYmVyIjoiKzkxOTY4NjIwMzg4MyIsImV4cCI6MTY0MDAwMTY4MiwiaWF0IjoxNjM5OTk4MDgyLCJmYW1pbHlfbmFtZSI6Ik4iLCJlbWFpbCI6InJhbmppdGhhLm5hZ2VuZHJhQHZlbnRyaWtzLmNvbSJ9.UwPrsVvlrgPeLs_IU7oqi4n4aQriH1oi--c-R1w25pYfg8duzP0AojUfRfntnp_UcUVe5lveASp2U9n7YFDVivbcET7vkcb6XXy0l6VL2Uc_SdOt6jJ0ME9wVSiQrFkrjRZMRmKlNiHPEEBCxUWOeoh1emgFTDiR6iV4syQK1Fa82gsaaoslfpQlSixW9g92qpUN4pDCyD6ckRQQ3H2mo9vHlLf8TBJMSP7CT4vS1oDm51-tE_EDkLaSnYIIwANdXDl_cf4B43Qm2biHQISaWV3YiPRLBQ3aYf9RPiqwmFeLY2Ft43z9Hth_BTNRLf94RiK7IUHYos9qAiPgcGePKg",
+                                    "type": "text"
+                                }
+                            ],
+                            "url": {
+                                "raw": "{{qaurl}}/integration/getAllUserIntegrationSettings",
+                                "host": [
+                                    "{{qaurl}}"
+                                ],
+                                "path": [
+                                    "integration",
+                                    "getAllUserIntegrationSettings"
+                                ]
+                            }
+                        },
+                        "response": []
+                    },
+                    {
+                        "name": "getAllMarketplaceIntegrations",
+                        "event": [
+                            {
+                                "listen": "test",
+                                "script": {
+                                    "exec": [
+                                        "pm.test(\"Status code is 200\", function () {\r",
+                                        "    pm.response.to.have.status(200);\r",
+                                        "});\r",
+                                        "pm.test(\"Your test name\", function () {\r",
+                                        "    var jsonData = pm.response.json();\r",
+                                        "    pm.expect(jsonData.status).to.eql(true);\r",
+                                        "});"
+                                    ],
+                                    "type": "text/javascript"
+                                }
+                            }
+                        ],
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{idTokendev}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                                "raw": "{{qaurl}}/product/getAllMarketplaceIntegrations",
+                                "host": [
+                                    "{{qaurl}}"
+                                ],
+                                "path": [
+                                    "product",
+                                    "getAllMarketplaceIntegrations"
+                                ]
+                            }
+                        },
+                        "response": []
+                    },
+                    {
+                        "name": "GetUserIntegrationById",
+                        "event": [
+                            {
+                                "listen": "test",
+                                "script": {
+                                    "exec": [
+                                        "pm.test(\"Status code is 200\", function () {\r",
+                                        "    pm.response.to.have.status(200);\r",
+                                        "});\r",
+                                        "pm.test(\"Your test name\", function () {\r",
+                                        "    var jsonData = pm.response.json();\r",
+                                        "    pm.expect(jsonData.status).to.eql(true);\r",
+                                        "});\r",
+                                        "pm.test(\"Your test name\", function () {\r",
+                                        "    var jsonData = pm.response.json();\r",
+                                        "    pm.expect(jsonData.message).to.eql(\"User Integration setting retrieved successfully\");\r",
+                                        "});"
+                                    ],
+                                    "type": "text/javascript"
+                                }
+                            }
+                        ],
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{idTokendev}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "GET",
+                            "header": [
+                                {
+                                    "key": "Authorization",
+                                    "value": "eyJraWQiOiJmejRsRE5KdWJLb0tmbFQyUVBZcWhyZTBQQjVSeG9wRG8xN1lIelc2SHNzPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIwMzk0YjdjNi1kYzJiLTRiMmUtODQ4My01YjZjODQ1YTBmZTIiLCJjb2duaXRvOmdyb3VwcyI6WyJ2dHhEZXZlbG9wZXJzIl0sImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiY29nbml0bzpwcmVmZXJyZWRfcm9sZSI6ImFybjphd3M6aWFtOjo0NTAxMjc3ODUzMDk6cm9sZVwvUm9sZUNvZ25pdG8iLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuZXUtd2VzdC0xLmFtYXpvbmF3cy5jb21cL2V1LXdlc3QtMV9LRzg5dW1GQzciLCJjb2duaXRvOnVzZXJuYW1lIjoicmFuaml0aGEubmFnZW5kcmEiLCJjdXN0b206Y29tcGFueSI6IlZlbnRyaWtzIiwiY29nbml0bzpyb2xlcyI6WyJhcm46YXdzOmlhbTo6NDUwMTI3Nzg1MzA5OnJvbGVcL1JvbGVDb2duaXRvIl0sImF1ZCI6IjVsaDBuajhzbGUyMTg3NmdibjY3aHQwNzZzIiwiZXZlbnRfaWQiOiI3NzM5MTQwNy03M2YzLTQ3OGEtOGJlMy02MTQ5ZTA4NTQ5Y2QiLCJ0b2tlbl91c2UiOiJpZCIsImF1dGhfdGltZSI6MTY0MDAwMjE3NCwibmFtZSI6IlJhbmppdGhhIiwicGhvbmVfbnVtYmVyIjoiKzkxOTY4NjIwMzg4MyIsImV4cCI6MTY0MDAwNTc3NCwiaWF0IjoxNjQwMDAyMTc0LCJmYW1pbHlfbmFtZSI6Ik4iLCJlbWFpbCI6InJhbmppdGhhLm5hZ2VuZHJhQHZlbnRyaWtzLmNvbSJ9.KQ_G9XH7IdDklLW6G4-EiwwfPrAQstuzz1FWzswSLeEuMPI3yZHp7ExagFxVWuMvIm5r3qOGz_gsmHGlG5CHdYQ5q6uvOcxceWQ-ymjEWOZjBlghPUNfcaVKxHjHyq0FuLcEQje1mOQp6CZB6PoU98i3tlcnEgZR-e5HzTtV8xNOJflpv6tLbaCh8xE08XVz7iFLXA9ybJ1L4DlOXIi3DVXlW7Nmz_Db-j5jFTQwFc2OH_QyUoU0ZzU6f_W5AtiIDz4MdlL_REAxvbiD1xRE_tPlHnl9KRyi8h7QO9yVpM53x8MRNp-aJUYxnJ24YDfcBDS0o5Ie5k1y5oVjPDrwMQ",
+                                    "type": "text"
+                                }
+                            ],
+                            "url": {
+                                "raw": "{{qaurl}}/integration/getUserIntegration?id=61c066908e8a0310ec80b65e",
+                                "host": [
+                                    "{{qaurl}}"
+                                ],
+                                "path": [
+                                    "integration",
+                                    "getUserIntegration"
+                                ],
+                                "query": [
+                                    {
+                                        "key": "id",
+                                        "value": "61c066908e8a0310ec80b65e"
+                                    }
+                                ]
+                            }
+                        },
+                        "response": []
+                    },
+                    {
+                        "name": "CreateUserIntegration",
+                        "event": [
+                            {
+                                "listen": "test",
+                                "script": {
+                                    "exec": [
+                                        "pm.test(\"Status code is 200\", function () {\r",
+                                        "    pm.response.to.have.status(200);\r",
+                                        "});\r",
+                                        "pm.test(\"Your test name\", function () {\r",
+                                        "    var jsonData = pm.response.json();\r",
+                                        "    pm.expect(jsonData.status).to.eql(true);\r",
+                                        "});"
+                                    ],
+                                    "type": "text/javascript"
+                                }
+                            }
+                        ],
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{idTokendev}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "POST",
+                            "header": [],
+                            "url": {
+                                "raw": "{{qaurl}}/integration/createUserIntegration",
+                                "host": [
+                                    "{{qaurl}}"
+                                ],
+                                "path": [
+                                    "integration",
+                                    "createUserIntegration"
+                                ]
+                            }
+                        },
+                        "response": []
+                    },
+                    {
+                        "name": "GetAllIntegrationSettings",
+                        "event": [
+                            {
+                                "listen": "test",
+                                "script": {
+                                    "exec": [
+                                        "pm.test(\"Status code is 200\", function () {\r",
+                                        "    pm.response.to.have.status(200);\r",
+                                        "});\r",
+                                        "pm.test(\"Your test name\", function () {\r",
+                                        "    var jsonData = pm.response.json();\r",
+                                        "    pm.expect(jsonData.status).to.eql(true);\r",
+                                        "});"
+                                    ],
+                                    "type": "text/javascript"
+                                }
+                            }
+                        ],
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{idTokendev}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                                "raw": "{{qaurl}}/integration/getAllIntegrationSettings",
+                                "host": [
+                                    "{{qaurl}}"
+                                ],
+                                "path": [
+                                    "integration",
+                                    "getAllIntegrationSettings"
+                                ]
+                            }
+                        },
+                        "response": []
+                    },
+                    {
+                        "name": "GetIntegrationById",
+                        "event": [
+                            {
+                                "listen": "test",
+                                "script": {
+                                    "exec": [
+                                        "pm.test(\"Status code is 200\", function () {\r",
+                                        "    pm.response.to.have.status(200);\r",
+                                        "});\r",
+                                        "pm.test(\"Your test name\", function () {\r",
+                                        "    var jsonData = pm.response.json();\r",
+                                        "    pm.expect(jsonData.status).to.eql(true);\r",
+                                        "});"
+                                    ],
+                                    "type": "text/javascript"
+                                }
+                            }
+                        ],
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{idTokendev}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                                "raw": "{{qaurl}}/integration/getIntegrationSetting?id=61a71f919a71d608eaf12976",
+                                "host": [
+                                    "{{qaurl}}"
+                                ],
+                                "path": [
+                                    "integration",
+                                    "getIntegrationSetting"
+                                ],
+                                "query": [
+                                    {
+                                        "key": "id",
+                                        "value": "61a71f919a71d608eaf12976"
+                                    }
+                                ]
+                            }
+                        },
+                        "response": []
                     }
                 ]
             },
