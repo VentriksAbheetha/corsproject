@@ -7,6 +7,15 @@ import {XMLHttpRequest} from "xmlhttprequest";
 // Step 3  - Check any sample module API to see if it's working (success) or have any errors (CORS or functional errors with http code). Log the response message.
 // validate API
 
+/**
+ * This function creates an xmlhttprequest (with CORS check) and returns a promise which resolves into the API response
+ if the request is successful.
+ * @param url
+ * @param method
+ * @param authToken
+ * @returns {Promise<unknown>}
+ * @constructor
+ */
 export async function APICORSrequest(url, method, authToken){
     try {
 
