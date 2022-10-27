@@ -4,7 +4,20 @@ import {signinCORSrequest} from "../signin.js";
 
 let authToken = await signinCORSrequest();
 
-console.time('myTime1')
+/**
+ *
+ * @returns {Promise<void>}
+ */
+// current timestamp in milliseconds
+const timestamp = Date.now();
+
+const dateObject = new Date(timestamp);
+
+const time = dateObject.toLocaleString();
+const time2 = dateObject.toLocaleTimeString();
+
+// prints date & time in YYYY-MM-DD format
+console.log( `${time}` );
 async function cors() {
     let qaurl = 'https://qa.ventriksapi2.com';
     let replaceString = '{{qaurl}}';
@@ -13,19 +26,18 @@ async function cors() {
             // console.log(qaAPIS.item[i].item[0].request.url.path[0])
             // if (qaAPIS.item[i].name === ("License")) { //Name of the module here can be changed to check the response of other modules
             //     console.log(qaAPIS.item[1].item[1].request.url.raw);
-                console.log(qaAPIS.item[i].item[j].name)
                 const urlText = qaAPIS.item[i].item[j].request.url.raw;
                 let url = urlText.toString().replace(replaceString, qaurl);
 
                 const method = qaAPIS.item[i].item[j].request.method;
                 try {
                     await APICORSrequest(url, method, authToken).then(r => {
-                        console.log(JSON.parse(r).status)
+                        console.log("[" + time2 + "]" + " " + qaAPIS.item[i].item[j].name + " " + url + " " + "CORS Check=Success" + " " + "status="+ JSON.parse(r).status )
                         return r;
                     })
                 }
                 catch(err) {
-                    console.log(err)
+                    console.log(qaAPIS.item[i].item[j].name + " " + url + " " + "ERROR" +  err)
                 }
             // }
 
@@ -33,7 +45,6 @@ async function cors() {
 
     }
 }
-console.timeEnd('myTime1') //myTime1: 5047.492ms
 
 cors().then(r=>{
     console.log(r);

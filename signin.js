@@ -26,7 +26,10 @@ import {APICORSrequest, } from "./corstest.js";
 //     }
 //     return xhr;
 // }
-
+/**
+ *
+ * @returns {Promise<unknown>}
+ */
 export const signinCORSrequest = async () => {
     const username = 'jenkins-warmer';
     const password = 'Inverness$1';
@@ -47,6 +50,10 @@ export const signinCORSrequest = async () => {
         xhr.send(`{"username":"${username}", "password":"${password}"}`);
     })
 };
+
+/**
+ *
+ */
 signinCORSrequest().then((res)=>{
     let value = res;
     return value
