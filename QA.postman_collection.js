@@ -144,7 +144,7 @@ export default qaAPIS =
                 ]
             },
             {
-                "name": "ETL Definition",
+                "name": "etl-definition.js",
                 "item": [
                     {
                         "name": "CreateETLDefinition",
