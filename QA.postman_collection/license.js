@@ -6,6 +6,7 @@ import qaAPIS from '../QA.postman_collection.js'
 import {APICORSrequest,} from "../corstest.js";
 import {signinCORSrequest} from "../signin.js";
 
+
 const timestamp = Date.now();
 
 const dateObject = new Date(timestamp);
@@ -17,6 +18,11 @@ let authToken = await signinCORSrequest();
 
 console.log( `${time}` );
 
+/**
+ * Takes the name of the module as a parameter and prints the API responses of that particular module
+ * @param module
+ * @returns {Promise<void>}
+ */
 export async function cors(module) {
     let qaurl = 'https://qa.ventriksapi2.com';
     let replaceString = '{{qaurl}}';
@@ -48,4 +54,4 @@ export async function cors(module) {
 }
 
 
-cors();
+cors('License');

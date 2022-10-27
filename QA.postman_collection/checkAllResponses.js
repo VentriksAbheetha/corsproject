@@ -4,11 +4,7 @@ import {signinCORSrequest} from "../signin.js";
 
 let authToken = await signinCORSrequest();
 
-/**
- *
- * @returns {Promise<void>}
- */
-// current timestamp in milliseconds
+
 const timestamp = Date.now();
 
 const dateObject = new Date(timestamp);
@@ -16,16 +12,19 @@ const dateObject = new Date(timestamp);
 const time = dateObject.toLocaleString();
 const time2 = dateObject.toLocaleTimeString();
 
-// prints date & time in YYYY-MM-DD format
 console.log( `${time}` );
+
+/**
+ * This function checks all APIs and returns the formatted API response and prints it to the console.
+ * If there are errors it catches the errors and prints the error message to the console.
+ * @returns {Promise<void>}
+ */
 async function cors() {
     let qaurl = 'https://qa.ventriksapi2.com';
     let replaceString = '{{qaurl}}';
     for (let i = 1; i < qaAPIS.item.length; i++) {
         for (let j = 0; j < qaAPIS.item[i].item.length; j++) {
-            // console.log(qaAPIS.item[i].item[0].request.url.path[0])
-            // if (qaAPIS.item[i].name === ("License")) { //Name of the module here can be changed to check the response of other modules
-            //     console.log(qaAPIS.item[1].item[1].request.url.raw);
+
                 const urlText = qaAPIS.item[i].item[j].request.url.raw;
                 let url = urlText.toString().replace(replaceString, qaurl);
 
@@ -39,7 +38,6 @@ async function cors() {
                 catch(err) {
                     console.log(qaAPIS.item[i].item[j].name + " " + url + " " + "ERROR" +  err)
                 }
-            // }
 
         }
 
