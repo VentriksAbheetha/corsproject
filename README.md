@@ -22,3 +22,16 @@ Command : node checkAllResponses.js >> log-file.txt
 
 - Write API logs to log-file.html
 
+-----------------------------------------
+
+Similarly, if response of individual module needs to be done use the command
+
+For example, 
+
+- Write API logs of license module to log-file.txt
+
+Command : node license.js > log-file.txt
+
+- Append API logs of license module to log-file.txt
+
+Command : node license.js >> log-file.txt

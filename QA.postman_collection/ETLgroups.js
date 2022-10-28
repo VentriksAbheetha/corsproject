@@ -1,4 +1,4 @@
 
-import {cors} from "./license.js";
+import {cors} from "./modulecheck.js";
 
 cors('ETLGroups');

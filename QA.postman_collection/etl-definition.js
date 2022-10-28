@@ -1,3 +1,3 @@
-import {cors} from "./license.js";
+import {cors} from "./modulecheck.js";
 
 cors('ETL Definition');
