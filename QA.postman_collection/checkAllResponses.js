@@ -4,7 +4,6 @@ import {signinCORSrequest} from "../signin.js";
 
 let authToken = await signinCORSrequest();
 
-
 const timestamp = Date.now();
 
 const dateObject = new Date(timestamp);
@@ -13,6 +12,7 @@ const time = dateObject.toLocaleString();
 const time2 = dateObject.toLocaleTimeString();
 
 console.log( `${time}` );
+const e = document.createElement('div');
 
 /**
  * This function checks all APIs and returns the formatted API response and prints it to the console.
@@ -38,7 +38,6 @@ async function cors() {
                 catch(err) {
                     console.log(qaAPIS.item[i].item[j].name + " " + url + " " + "ERROR" +  err)
                 }
-
         }
 
     }
