@@ -31,7 +31,6 @@ app.get("/", async function (req, res) {
     app.get("/api/logs/:module", async function (req, res) {
         // let logs = cors('Rules')
             try {
-                console.log(app.get)
                 let logs = await cors(req.params.module);
                 // console.log(logs);
                 res.send(logs);

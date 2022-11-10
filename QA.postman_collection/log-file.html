@@ -1,6 +1,8 @@
 <html>
+<head>
+    <link rel="stylesheet" href="log-file.css">
+</head>
     <body>
-<!--        <div id="logs">-->
             <form onsubmit="return submitHandler();">
                 <select id="modules" >
 
@@ -8,9 +10,33 @@
                     <option value="Collectors">Collectors</option>
                     <option value="License">License</option>
               </select>
-<!--        </div>-->
                 <button type="submit">SUBMIT</button>
             </form>
+
+                <table>
+                    <thead id="successHeadings">
+                    <tr>
+                        <th>API name</th>
+                        <th>API Url</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody id="successLogs">
+
+                    </tbody>
+                </table>
+
+                <table>
+                    <thead id="errorHeadings">
+                    <tr>
+                        <th>API name</th>
+                        <th>Error message</th>
+                    </tr>
+                    </thead>
+                    <tbody id="errorLogs">
+
+                    </tbody>
+                </table>
             <div id="logs">
 
             </div>
@@ -58,10 +84,7 @@
                 async function getLogs(module) {
                 try {
                     let response = await fetch(`/api/logs/${module}`);
-                    console.log(response)
                     let logs = await response.json();
-                    console.log(logs)
-
                     return logs;
 
                 } catch (error) {
@@ -78,26 +101,60 @@
 
                 document.getElementById('loading').style.display = 'block';
 
-
                 document.getElementById('modules').value = moduleName;
-
-
 
                 getLogs(moduleName).then((r) => {
 
-                    document.getElementById('loading').style.display = 'none';
-                    r.forEach((log) => {
-                        console.log(log);
-                        let ele = document.createElement('div')
-                        document.getElementById('logs').appendChild(ele);
-                        ele.innerHTML = `${log}`
+                        r.succesLogs.forEach((log) => {
+                                let successLogs = document.createElement('tr');
+                                let tbody = document.getElementById('successLogs');
+                                tbody.appendChild(successLogs);
+
+                                let apiName = document.createElement('td')
+                                let apiUrl = document.createElement('td')
+                                let status = document.createElement('td')
+
+                                successLogs.appendChild(apiName);
+                                successLogs.appendChild(apiUrl);
+                                successLogs.appendChild(status);
+
+                                apiName.innerHTML = `${log.apiName}`
+                                apiUrl.innerHTML = `${log.apiUrl}`
+                                status.innerHTML = `${log.statusCheck}`
+
+
+                            // console.log(log);
+                            // let ele = document.createElement('div')
+                            // document.getElementById('logs').appendChild(ele);
+                            // ele.innerHTML = `${log.apiName}`
+                        })
+
+                })
+
+                getLogs(moduleName).then((r) => {
+
+                    r.errorLogs.forEach((log) => {
+                        let successLogs = document.createElement('tr');
+                        let tbody = document.getElementById('errorLogs');
+                        tbody.appendChild(successLogs);
+
+                        let apiName = document.createElement('td')
+                        let error = document.createElement('td')
+
+                        successLogs.appendChild(apiName);
+                        successLogs.appendChild(error);
+
+                        apiName.innerHTML = `${log.apiName}`
+                        error.innerHTML = `${log.error}`
+
+
                     })
-                    // console.log(r)
+
                 })
 
 
-
             }
+
 
         </script>
 

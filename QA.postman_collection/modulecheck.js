@@ -23,8 +23,7 @@ console.log( `${time}` + "MEHMEHMEHMEH");
 
 export async function cors(module) {
 
-    let logs = [];
-
+    let logs = {succesLogs:[], errorLogs:[]};
     let qaurl = 'https://qa.ventriksapi2.com';
     let replaceString = '{{qaurl}}';
     for (let i = 0; i < qaAPIS.item.length; i++) {
@@ -38,26 +37,24 @@ export async function cors(module) {
                 try {
                     const method = qaAPIS.item[i].item[j].request.method;
                       await APICORSrequest(url, method, authToken).then(r => {
-                          // logs.push({apiName:qaAPIS.item[i].item[j].name, urlName: url, statusCheck : JSON.parse(r).status })
-                        logs.push("[" + time2 + "]" + " " + qaAPIS.item[i].item[j].name + " " + url + " " + "CORS Check=Success" + " " + "status="+ JSON.parse(r).status)
-
+                          logs.succesLogs.push({apiName:qaAPIS.item[i].item[j].name, apiUrl: url, statusCheck : JSON.parse(r).status })
+                        // logs.push("[" + time2 + "]" + " " + qaAPIS.item[i].item[j].name + " " + url + " " + "CORS Check=Success" + " " + "status="+ JSON.parse(r).status)
                          // console.log(r);
                         // logs[j].push("[" + time2 + "]" + " " + qaAPIS.item[i].item[j].name + " " + url + " " + "CORS Check=Success" + " " + "status="+ JSON.parse(r).status)
-                        console.log("[" + time2 + "]" + " " + qaAPIS.item[i].item[j].name + " " + url + " " + "CORS Check=Success" + " " + "status="+ JSON.parse(r).status )
+                        // console.log("[" + time2 + "]" + " " + qaAPIS.item[i].item[j].name + " " + url + " " + "CORS Check=Success" + " " + "status="+ JSON.parse(r).status )
                         // return r;
                     })
 
                 }
                 catch(err){
                     // console.log("[" + time2 + "]" + " " + qaAPIS.item[i].item[j].name + " " + url + " " + "ERROR" +  err)
-                    logs.push("[" + time2 + "]" + " " + qaAPIS.item[i].item[j].name + " " + url + " " + "ERROR" +  err)
+                    logs.errorLogs.push({apiName:qaAPIS.item[i].item[j].name, error: err})
+                    // logs.errorLogs.push("[" + time2 + "]" + " " + qaAPIS.item[i].item[j].name + " " + url + " " + "ERROR" +  err)
 
                 }
 
             }
-            else{
 
-            }
 
         }
 
