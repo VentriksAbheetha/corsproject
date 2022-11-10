@@ -1,5 +1,4 @@
 //This file sets the authorization token so that the apis can be accessed
-
 import { signinCORSrequest} from "./signin.js";
 import {XMLHttpRequest} from "xmlhttprequest";
 // Step 1 - Signin and get credentials
@@ -19,7 +18,7 @@ import {XMLHttpRequest} from "xmlhttprequest";
 export async function APICORSrequest(url, method, authToken){
     try {
 
-        return new Promise((resolve, reject) => {
+       return new Promise((resolve, reject) => {
             let xhr = new XMLHttpRequest();
             if ("withCredentials" in xhr) {
                 /*The XMLHttpRequest.withCredentials property is a boolean value that indicates whether or not
@@ -55,16 +54,16 @@ export async function APICORSrequest(url, method, authToken){
                 resolve(xhr.responseText)
 
             };
-            xhr.setRequestHeader("Authorization", "Bearer " + authToken);
+
+           xhr.setRequestHeader("Authorization", "Bearer " + authToken);
 
             xhr.send();
 
         });
+
     }
     catch(err) {
         console.log(err);
     }
 
 }
-
-

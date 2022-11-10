@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>
+    API Check
+    </title>
+</head>
+<body>
+<div>JFIORNEROINROIENGROGNORENGOOER</div>
+<div id="logs">
+
+</div>
+<script>
+
+  let moduleName = window.decodeURIComponent(window.location.pathname).substring(6)
+
+    async function getLogs(module) {
+        try {
+            let response = await fetch(`/api/logs/${module}`);
+            console.log(response)
+            let logs = await response.json();
+            console.log(logs)
+
+            return logs;
+
+        } catch (error) {
+
+            return null;
+        }
+
+
+    }
+    getLogs(moduleName).then((r)=>{
+
+        r.forEach((log) => {
+            console.log(log);
+            let ele = document.createElement('div')
+            document.getElementById('logs').appendChild(ele);
+            ele.innerHTML = `${log}`
+        })
+        // console.log(r)
+    })
+</script>
+</body>
+</html>

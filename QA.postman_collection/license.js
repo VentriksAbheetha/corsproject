@@ -1,4 +1,4 @@
 
 import {cors} from "./modulecheck.js";
 
-cors('Assest');
+cors('License');

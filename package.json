@@ -2,7 +2,11 @@
   "name": "corsproject",
   "version": "1.0.0",
   "type": "module",
+  "private": "true",
   "dependencies": {
+    "express": "^4.18.2",
+    "lodash": "^4.17.21",
+    "node-fetch": "^3.2.10",
     "xmlhttprequest": "^1.8.0"
   }
 }

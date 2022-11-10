@@ -1,5 +1,6 @@
 
 import {XMLHttpRequest} from "xmlhttprequest";
+import {fileURLToPath} from "url";
 
 /**
  * This function signs in the user jenkins-warmer
@@ -34,3 +35,5 @@ signinCORSrequest().then((res)=>{
     return value
 })
 
+// const __filename = fileURLToPath(import.meta.url);
+// console.log(__filename)

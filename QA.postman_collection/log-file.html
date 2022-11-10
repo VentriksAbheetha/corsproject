@@ -1,0 +1,106 @@
+<html>
+    <body>
+<!--        <div id="logs">-->
+            <form onsubmit="return submitHandler();">
+                <select id="modules" >
+
+                    <option value="MarketPlace Provider">MarketPlace Provider</option>
+                    <option value="Collectors">Collectors</option>
+                    <option value="License">License</option>
+              </select>
+<!--        </div>-->
+                <button type="submit">SUBMIT</button>
+            </form>
+            <div id="logs">
+
+            </div>
+            <div id="loading" style="display: none;">Loading ....</div>
+        <script>
+            function submitHandler(){
+                console.log('Submithandler');
+                window.location.href= `http://localhost:5000/logs/${document.getElementById('modules').value}`;
+                // getLogs(document.getElementById('modules').value).then((r)=>{
+                //     r.forEach((log) => {
+                //         console.log(log);
+                //         let ele = document.createElement('div')
+                //         document.getElementById('logs').appendChild(ele);
+                //         ele.innerHTML = `${log}`
+                //     })
+                    // console.log(r)
+                // })
+                return false;
+            }
+
+
+            // window.onload = function f() {
+            //     fetch('/logs', {
+            //         method: 'GET', // or 'PUT'
+            //
+            //     })
+            //         .then((response) => response.json())
+            //         .then((data) => {
+            //             data.forEach((log) => {
+            //                 console.log(log);
+            //                 let ele = document.createElement('div');
+            //                 ele.innerHTML = "hiiiiii"
+            //             })
+            //             document.getElementById('logs').innerText = `${data[0]}`
+            //             console.log('Success:', data);
+            //         })
+            //         .catch((error) => {
+            //             console.error('Error:', error);
+            //         });
+            // }
+            // let dropdown = document.getElementById('modules')
+            // let selectedModule = document.getElementById('modules').value;
+            // dropdown.onchange =  getLogs(selectedModule);
+
+                async function getLogs(module) {
+                try {
+                    let response = await fetch(`/api/logs/${module}`);
+                    console.log(response)
+                    let logs = await response.json();
+                    console.log(logs)
+
+                    return logs;
+
+                } catch (error) {
+
+                    return null;
+                }
+
+
+            }
+
+            let moduleName = window.decodeURIComponent(window.location.pathname).substring(6);
+
+            if(window.location.pathname !== "/") {
+
+                document.getElementById('loading').style.display = 'block';
+
+
+                document.getElementById('modules').value = moduleName;
+
+
+
+                getLogs(moduleName).then((r) => {
+
+                    document.getElementById('loading').style.display = 'none';
+                    r.forEach((log) => {
+                        console.log(log);
+                        let ele = document.createElement('div')
+                        document.getElementById('logs').appendChild(ele);
+                        ele.innerHTML = `${log}`
+                    })
+                    // console.log(r)
+                })
+
+
+
+            }
+
+        </script>
+
+    </body>
+</html>
+
