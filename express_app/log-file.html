@@ -1,107 +1,11 @@
 <html>
 <head>
-    <link rel="stylesheet"  type="text/css"  href="log-file.css">
-    <style>
-        #successHeadings, #errorHeadings {
-           background-color: rgb(249 249 249);
-            color: rgb(150, 200, 184);
-            opacity: 4;
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-        }
-        #successHeadings > th, #errorHeadings > th {
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-            --tw-text-opacity: 1;
-            color: rgb(148 163 184 / var(--tw-text-opacity));
-        }
-        #successLogs, #errorLogs{
-            background-color: rgb(249 250 251);
-        }
-
-        #successLogs > tr, #errorLogs > tr{
-            white-space: pre-wrap;
-            max-width: 200px;
-            max-height: 100px;
-            /*white-space: -moz-pre-wrap;*/
-            /*white-space: -o-pre-wrap;*/
-            word-wrap: break-word;
-            overflow-y:auto;
-
-        }
-
-        #successLogs > tr > td, #errorLogs > tr > td {
-            font-size: 0.875rem;
-            line-height: 1.25rem;
-            color: rgb(170 163 184);
-            opacity: 3;
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-            text-align: left;
-            /*max-width: 800px;*/
-            white-space: pre-wrap;
-            /*max-width: 200px;*/
-            max-height: 100px;
-            /*white-space: -moz-pre-wrap;*/
-            /*white-space: -o-pre-wrap;*/
-            word-wrap: break-word;
-            overflow-y: auto;
-            max-width: 200px;
-        }
-
-        .button-39 {
-            background-color: #FFFFFF;
-            border: 1px solid rgb(209,213,219);
-            border-radius: .5rem;
-            box-sizing: border-box;
-            color: #111827;
-            font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-            font-size: .875rem;
-            font-weight: 600;
-            line-height: 1.25rem;
-            padding: .75rem 1rem;
-            text-align: center;
-            text-decoration: none #D1D5DB solid;
-            text-decoration-thickness: auto;
-            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            cursor: pointer;
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
-        }
-
-        .button-39:hover {
-            background-color: rgb(249,250,251);
-        }
-
-        .button-39:focus {
-            outline: 2px solid transparent;
-            outline-offset: 2px;
-        }
-
-        .button-39:focus-visible {
-            box-shadow: none;
-        }
-
-
-        select{
-            border: none;
-            /*appearance: none;*/
-        }
-        select:focus{
-            outline:none;
-        }
-    </style>
+    <link rel="stylesheet"  type="text/css"  href="/static/log-file.css">
 </head>
     <body>
             <form onsubmit="return submitHandler();">
                 <select id="modules" >
+                    <option value="All">All</option>
                     <option value="MarketPlace Provider">MarketPlace Provider</option>
                     <option value="Collectors">Collectors</option>
                     <option value="License">License</option>
@@ -120,11 +24,12 @@
                     <option value="BuildVersion">Build Version</option>
                     <option value="ETLGroups">ETL Groups</option>
                     <option value="CurveDefinitionVersion">Curve Definition Version</option>
+
               </select>
                 <button class="button-39"  type="submit">SUBMIT</button>
 
             </form>
-
+            <div class="table-container">
                 <table class="table" style="color: red">
                     <thead id="successHeadings">
 
@@ -133,8 +38,10 @@
 
                     </tbody>
                 </table>
+            </div>
 
-                <table>
+            <div class="table-container">
+                <table class="table">
                     <thead id="errorHeadings">
 
                     </thead>
@@ -142,6 +49,7 @@
 
                     </tbody>
                 </table>
+            </div>
 
             <div id="logs">
 
@@ -259,11 +167,17 @@
                                 let eapiName = document.createElement('td')
                                 let error = document.createElement('td')
 
-                                errorLogs.appendChild(eapiName);
-                               errorLogs.appendChild(error);
+                                let dapiName = document.createElement('div')
+                                let derror = document.createElement('div')
 
-                                eapiName.innerHTML = `${log.apiName}`
-                                error.innerHTML = `${log.error}`
+                                errorLogs.appendChild(eapiName);
+                                errorLogs.appendChild(error);
+
+                                eapiName.appendChild(dapiName);
+                                error.appendChild(derror);
+
+                                dapiName.innerHTML = `${log.apiName}`
+                                derror.innerHTML = `${log.error}`
 
                                 // console.log(log);
                             // let ele = document.createElement('div')

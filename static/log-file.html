@@ -100,7 +100,7 @@
     </style>
 </head>
     <body>
-            <form onsubmit="return submitHandler();">
+            <form onsubmit="return submitHandler();" >
                 <select id="modules" >
                     <option value="MarketPlace Provider">MarketPlace Provider</option>
                     <option value="Collectors">Collectors</option>
@@ -124,7 +124,7 @@
                 <button class="button-39"  type="submit">SUBMIT</button>
 
             </form>
-
+            <div class="table-container">
                 <table class="table" style="color: red">
                     <thead id="successHeadings">
 
@@ -133,8 +133,10 @@
 
                     </tbody>
                 </table>
+            </div>
 
-                <table>
+            <div class="table-container">
+            <table>
                     <thead id="errorHeadings">
 
                     </thead>
@@ -142,6 +144,7 @@
 
                     </tbody>
                 </table>
+            </div>
 
             <div id="logs">
 

@@ -9,9 +9,8 @@ const timestamp = Date.now();
 const dateObject = new Date(timestamp);
 
 const time = dateObject.toLocaleString();
-const time2 = dateObject.toLocaleTimeString();
 
-console.log( `${time}` + "BLAHBLAH BLAHBLAH")
+console.log( `${time}`)
 
 /**
  * This function checks all APIs and returns the formatted API response and prints it to the console.
@@ -33,6 +32,8 @@ export async function corsAll() {
                     const method = qaAPIS.item[i].item[j].request.method;
 
                     await APICORSrequest(url, method, authToken).then(r => {
+                        let time2 = dateObject.toLocaleTimeString();
+
 
                         logs.push({apiName:qaAPIS.item[i].item[j].name, urlName: url, statusCheck : JSON.parse(r).status })
 
@@ -44,6 +45,8 @@ export async function corsAll() {
                     })
                 }
                 catch(err) {
+                    let time2 = dateObject.toLocaleTimeString();
+
                     logs.push("[" + time2 + "]" + " " + qaAPIS.item[i].item[j].name + " " + url + " " + "ERROR" +  err)
 
                     console.log("[" + time2 + "]" + " " + qaAPIS.item[i].item[j].name + " " + url + " " + "ERROR" +  err)

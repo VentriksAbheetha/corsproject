@@ -5,9 +5,15 @@ import {cors} from "./modulecheck.js";
 
 const app = express();
 
+
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-console.log('directory-name', __dirname);
+const staticDirName = path.join(__dirname, "..\\static");
+
+app.use('/static', express.static(path.join(__dirname, '..\\static')));
+
+console.log('directory-name', staticDirName);
 // const __dirname2 = path.dirname("C:\\Users\\AbeethaPradhan\\corsproject\\QA.postman_collection\\modulecheck.js"
 
 // const __dirname3 = path.dirname("C:\\Users\\AbeethaPradhan\\corsproject")
@@ -31,9 +37,15 @@ app.get("/", async function (req, res) {
     app.get("/api/logs/:module", async function (req, res) {
         // let logs = cors('Rules')
             try {
-                let logs = await cors(req.params.module);
-                // console.log(logs);
-                res.send(logs);
+                if(req.params.module === 'All'){
+                    let logs = await cors();
+                    res.send(logs);
+                }
+                else {
+                    let logs = await cors(req.params.module);
+                    // console.log(logs);
+                    res.send(logs);
+                }
             }
             catch (e){
                 // console.log(e);
@@ -50,7 +62,7 @@ app.get("/logs/:module", function (req, res) {
 
 });
 
-app.use(express.static(path.join("C:\\Users\\AbeethaPradhan\\corsproject\\QA", '\\QA.postman_collection' )));
+
 
 
 // app.use('/static', express.static());
